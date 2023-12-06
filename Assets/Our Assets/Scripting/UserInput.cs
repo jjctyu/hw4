@@ -2,25 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// This file is used to pop up next events based on preset logic: strings pearls or desicion tree
-
-
-public class EventScheduler : MonoBehaviour
+public class UserInput : MonoBehaviour
 {
 
-    Narrative narrative;
+    EventScheduler scheduler;
 
     // Start is called before the first frame update
     void Start()
     {
-
-        narrative = GetComponent<Narrative>();
+        scheduler = GetComponent<EventScheduler>();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Pressed left-click.");
+        }
+            
+
+
     }
 }

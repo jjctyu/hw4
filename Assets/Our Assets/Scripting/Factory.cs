@@ -13,7 +13,7 @@ public class Factory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("Factory Start");
     }
 
     public int healthChange(int value)

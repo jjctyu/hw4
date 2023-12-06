@@ -2,19 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// This file is used to pop up next events based on preset logic: strings pearls or desicion tree
+// This file is used to record the world settings. 
 
-
-public class EventScheduler : MonoBehaviour
+public class World : MonoBehaviour
 {
 
-    Narrative narrative;
-
+    int scene = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
-
-        narrative = GetComponent<Narrative>();
         
     }
 
