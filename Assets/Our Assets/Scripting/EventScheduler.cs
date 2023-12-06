@@ -8,13 +8,17 @@ using UnityEngine;
 public class EventScheduler : MonoBehaviour
 {
 
+    [SerializeField]
     Narrative narrative;
+
+    int size = 0;
+    int cur = 0;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        narrative = GetComponent<Narrative>();
+        size = narrative.loadSize();
         
     }
 
@@ -23,4 +27,16 @@ public class EventScheduler : MonoBehaviour
     {
         
     }
+
+    public Dialogue getNextEvent()
+    {
+        if (cur == size)
+        {
+            return null;
+        }
+        Dialogue dialogue = narrative.getEventAtIndex(cur);
+        cur += 1;
+        return dialogue;
+    }
+
 }
