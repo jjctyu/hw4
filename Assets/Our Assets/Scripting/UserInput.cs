@@ -89,9 +89,13 @@ public class UserInput : MonoBehaviour
                 backwordButton.SetActive(false);
                 //show the options
                 option1.GetComponentInChildren<TMPro.TextMeshProUGUI>().SetText(d.options[0]);
-                option2.GetComponentInChildren<TMPro.TextMeshProUGUI>().SetText(d.options[1]);
                 option1.SetActive(true);
-                option2.SetActive(true);
+                if (d.options.Count > 1)
+                {
+                    option2.SetActive(true);
+                    option2.GetComponentInChildren<TMPro.TextMeshProUGUI>().SetText(d.options[1]);
+                }
+                
             }
 
             
@@ -182,10 +186,17 @@ public class UserInput : MonoBehaviour
         if (currentEvent != null && index == currentEvent.text.Count - 1)
         {
             option1.SetActive(true);
-            option2.SetActive(true);
             //show the options
             option1.GetComponentInChildren<TMPro.TextMeshProUGUI>().SetText(currentEvent.options[0]);
-            option2.GetComponentInChildren<TMPro.TextMeshProUGUI>().SetText(currentEvent.options[1]);
+
+
+
+            if (currentEvent.options.Count > 1)
+            {
+                option2.SetActive(true);
+                option2.GetComponentInChildren<TMPro.TextMeshProUGUI>().SetText(currentEvent.options[1]);
+            }
+
         }
         else
         {
