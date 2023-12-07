@@ -28,15 +28,15 @@ public class EventScheduler : MonoBehaviour
         
     }
 
-    public Dialogue getNextEvent()
+    public Event getNextEvent()
     {
         if (cur == size)
         {
             return null;
         }
-        Dialogue dialogue = narrative.getEventAtIndex(cur);
+        Event event1 = narrative.getEventAtIndex(cur);
         cur += 1;
-        return dialogue;
+        return event1;
     }
 
 }
