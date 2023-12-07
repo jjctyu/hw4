@@ -10,10 +10,11 @@ public class World : MonoBehaviour
     int scene = 0;
     float distance = 0;
     float speed = 8;
-    int sceneLength = 1920; //Change to 1920 - Mech width in pixels
+    int sceneLength = 1644; //scene length - Mech width in pixels
     bool mechWalking = false;
     public GameObject background;
     public GameObject mech;
+    public GameObject [] meters;
     
     // Start is called before the first frame update
     void Start()
@@ -24,31 +25,36 @@ public class World : MonoBehaviour
     void Update()
     {
         if (mechWalking){
-            moveObjects(Time.deltaTime);
+            moveObjects();
+            for (int i = 0; i < meters.Length; i++){
+                meters[i].GetComponent<manageMeters>().tick();
+            }
         }
         if(distance >= sceneLength){ //this code will assume scene is tied to locations and not unity scenes
             /*if(scene < 2){
                 scene++;
-                //set distance to 0
+                distance = 0;
                 //change background to scene
-                moveObjects (0);
+                positionObjects();
             } else {
                 //end event
             }
             */
+        } /*else if (check if opening an event){
+            //open event
         }
+        */
     }
 
-    void moveObjects (float movement){
+    void moveObjects (){
 
-        distance+=speed*movement;
+        distance+=speed*Time.deltaTime;
 
-        /*var mechTrans = mech.GetComponent<Transform>();
-        mechTrans.position.x = distance;
-        mech.transform = mechTrans;
+        positionObjects();
+    }
 
-        var backgroundTrans = background.GetComponent<Transform>();
-        backgroundTrans.position.x = -distance*(1920/sceneLength);
-        background.transform = backgroundTrans;*/
+    void positionObjects(){
+        mech.transform.position = new Vector3 (distance, mech.transform.position.y , mech.transform.position.z);
+        background.transform.position = new Vector3 (-distance*((1844-940)/sceneLength), background.transform.position.y , background.transform.position.z);
     }
 }
